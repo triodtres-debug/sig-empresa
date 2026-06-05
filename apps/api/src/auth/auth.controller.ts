@@ -14,6 +14,8 @@ export class AuthController {
   @UseGuards(AuthGuard('jwt'))
   @Get('me')
   me(@Req() req: any) {
+    console.error('[me] req.user:', JSON.stringify(req.user))
+    if (!req.user?.sub) throw new UnauthorizedException()
     return this.auth.me(req.user.sub)
   }
 
