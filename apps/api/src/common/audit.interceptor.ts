@@ -37,16 +37,17 @@ export class AuditInterceptor implements NestInterceptor {
 
     return next.handle().pipe(
       tap(async (responseBody: any) => {
+        if (!req.user?.sub) return
         const after = method === 'DELETE' ? null : responseBody
         const employee = await prisma.employee.findUnique({
-          where: { id: req.user?.sub },
+          where: { id: req.user.sub },
           select: { id: true, name: true, email: true },
         })
 
         try {
           await prisma.audit.create({
             data: {
-              employeeId: employee?.id || req.user?.sub,
+              employeeId: employee?.id || req.user.sub,
               employeeName: employee?.name || 'Desconhecido',
               employeeEmail: employee?.email || '',
               entityType,
