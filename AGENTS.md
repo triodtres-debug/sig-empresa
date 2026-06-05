@@ -47,7 +47,7 @@ sig-empresa/
 | `@backend` | SIG Backend | NestJS modules, endpoints, Prisma |
 | `@frontend` | SIG Frontend | Next.js pages, UI components, visual identity |
 | `@qa` | SIG QA | Quality gates, visual consistency, testing |
-| `@devops` | SIG DevOps | Deploy Railway, build/start commands, troubleshooting |
+| `@railway` | Railway DevOps | **Só ativar quando mencionar "railway".** Deploy Railway: build/start commands, variáveis, troubleshooting de container, crash 502, seed, push |
 
 ## Nomenclatura
 
