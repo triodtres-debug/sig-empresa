@@ -5,3 +5,8 @@ dist/
 *.log
 .DS_Store
 coverage/
+*.tsbuildinfo
+next-env.d.ts
+apps/api/uploads/
+.aiox-core
+AGENTS.md
