@@ -25,7 +25,7 @@ RUN pnpm --filter @sig/web build
 FROM base AS api
 COPY --from=build-api /app /app
 EXPOSE 3001
-CMD pnpm --filter @sig/database migrate:deploy && node apps/api/dist/main.js
+CMD pnpm --filter @sig/database migrate:deploy && pnpm --filter @sig/database exec tsx prisma/seed.ts && node apps/api/dist/main.js
 
 FROM base AS web
 COPY --from=build-web /app /app
