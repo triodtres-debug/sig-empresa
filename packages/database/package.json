@@ -2,9 +2,10 @@
   "name": "@sig/database",
   "version": "0.1.0",
   "private": true,
-  "main": "./src/index.ts",
+  "main": "./dist/src/index.js",
   "scripts": {
     "generate": "prisma generate",
+    "build": "tsc",
     "migrate:dev": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
     "push": "prisma db push",
