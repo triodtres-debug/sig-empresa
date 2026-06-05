@@ -1,0 +1,27 @@
+{
+  "name": "sig-empresa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sistema de Gestão Empresarial",
+  "scripts": {
+    "dev": "concurrently -n api,web \"pnpm dev:api\" \"pnpm dev:web\"",
+    "dev:api": "pnpm --filter @sig/api run dev",
+    "dev:web": "pnpm --filter @sig/web run dev",
+    "build": "pnpm run --recursive build",
+    "test": "pnpm run --recursive test",
+    "lint": "pnpm run --recursive lint",
+    "typecheck": "pnpm run --recursive typecheck",
+    "db:generate": "pnpm --filter @sig/database run generate",
+    "db:migrate": "pnpm --filter @sig/database run migrate:dev",
+    "db:push": "pnpm --filter @sig/database run push",
+    "db:studio": "pnpm --filter @sig/database run studio",
+    "db:seed": "pnpm --filter @sig/database exec tsx prisma/seed.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.0.0",
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  }
+}

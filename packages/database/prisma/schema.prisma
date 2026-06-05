@@ -1,0 +1,233 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  OPERATOR
+  VIEWER
+}
+
+enum Resource {
+  DASHBOARD
+  EMPLOYEES
+  SYSTEMS
+  USERS
+  EXPENSES
+  STATUSES
+  GROUPS
+  AUTHORIZATIONS
+}
+
+enum Action {
+  VIEW
+  CREATE
+  EDIT
+  DELETE
+  MENU
+}
+
+model Group {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  permissions GroupPermission[]
+  employees   EmployeeGroup[]
+
+  @@map("groups")
+}
+
+model GroupPermission {
+  id       String   @id @default(cuid())
+  groupId  String
+  resource Resource
+  action   Action
+  allowed  Boolean  @default(true)
+
+  group Group @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@unique([groupId, resource, action])
+  @@map("group_permissions")
+}
+
+model Employee {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  cpf       String   @unique
+  phone     String?
+  photo     String?
+  password  String
+  isAdmin   Boolean  @default(false)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  employeeSystems   EmployeeSystem[]
+  expenses          Expense[]
+  sessions          Session[]
+  groups            EmployeeGroup[]
+  permissions       EmployeePermission[]
+
+  @@map("employees")
+}
+
+model EmployeeGroup {
+  employeeId String
+  groupId    String
+
+  employee Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  group    Group    @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@id([employeeId, groupId])
+  @@map("employee_groups")
+}
+
+model EmployeePermission {
+  id         String   @id @default(cuid())
+  employeeId String
+  resource   Resource
+  action     Action
+  allowed    Boolean  @default(true)
+
+  employee Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@unique([employeeId, resource, action])
+  @@map("employee_permissions")
+}
+
+model Session {
+  id         String   @id @default(cuid())
+  employeeId String
+  token      String   @unique
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+
+  employee Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model System {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  baseUrl     String?
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  employeeSystems EmployeeSystem[]
+  systemUsers     SystemUser[]
+  expenses        Expense[]
+
+  @@map("systems")
+}
+
+model EmployeeSystem {
+  employeeId String
+  systemId   String
+
+  employee Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  system   System   @relation(fields: [systemId], references: [id], onDelete: Cascade)
+
+  @@id([employeeId, systemId])
+  @@map("employee_systems")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  name        String
+  email       String?
+  phone       String?
+  document    String?
+  externalId  String?
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  systemUsers SystemUser[]
+
+  @@map("users")
+}
+
+model SystemUser {
+  systemId String
+  userId   String
+  statusId String?
+
+  system   System  @relation(fields: [systemId], references: [id], onDelete: Cascade)
+  user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status   Status? @relation(fields: [statusId], references: [id])
+
+  @@id([systemId, userId])
+  @@map("system_users")
+}
+
+model Expense {
+  id          String   @id @default(cuid())
+  description String
+  amount      Float
+  date        DateTime
+  category    String?
+  employeeId  String
+  systemId    String?
+  statusId    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  employee Employee  @relation(fields: [employeeId], references: [id])
+  system   System?   @relation(fields: [systemId], references: [id])
+  status   Status?   @relation(fields: [statusId], references: [id])
+
+  @@map("expenses")
+}
+
+model Status {
+  id         String   @id @default(cuid())
+  name       String
+  slug       String
+  entityType String
+  color      String?  @default("#6b7280")
+  order      Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  systemUsers SystemUser[]
+  expenses    Expense[]
+
+  @@unique([slug, entityType])
+  @@map("statuses")
+}
+
+model Audit {
+  id            String   @id @default(cuid())
+  employeeId    String
+  employeeName  String
+  employeeEmail String
+  entityType    String
+  entityId      String?
+  operation     String
+  before        Json?
+  after         Json?
+  ip            String?
+  userAgent     String?
+  endpoint      String?
+  method        String?
+  createdAt     DateTime @default(now())
+
+  @@index([entityType, entityId])
+  @@index([employeeId])
+  @@index([createdAt])
+  @@index([operation])
+  @@map("audits")
+}

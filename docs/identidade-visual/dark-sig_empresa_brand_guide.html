@@ -1,0 +1,341 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.bg{background:#0D1117;border-radius:16px;padding:40px;font-family:'DM Sans',sans-serif;color:#F0F4FF}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.12em;color:#4A6FA5;text-transform:uppercase;margin-bottom:14px}
+.divider{width:100%;height:0.5px;background:#1E2D42;margin:32px 0}
+.logo-mark{display:inline-flex;align-items:baseline;gap:1px;font-size:32px;font-weight:500;letter-spacing:-0.02em}
+.logo-sig{color:#F0F4FF}
+.logo-dot{color:#2F6FED;font-size:36px;line-height:1}
+.logo-emp{color:#4A6FA5;font-weight:400}
+.tagline{font-size:13px;color:#4A6FA5;margin-top:6px;letter-spacing:0.01em}
+
+.row{display:grid;gap:24px}
+.row-2{grid-template-columns:1fr 1fr}
+.row-3{grid-template-columns:1fr 1fr 1fr}
+.row-4{grid-template-columns:repeat(4,1fr)}
+
+.card{background:#111820;border:0.5px solid #1E2D42;border-radius:10px;padding:20px}
+.card-title{font-size:12px;font-weight:500;color:#F0F4FF;margin-bottom:10px}
+.card-sub{font-size:11px;color:#4A6FA5;margin-top:4px}
+
+.swatch{height:52px;border-radius:6px;margin-bottom:8px}
+.hex{font-family:'DM Mono',monospace;font-size:10px;color:#4A6FA5}
+.color-name{font-size:11px;color:#8BA4C8;margin-top:2px}
+.color-role{font-size:10px;color:#2F6FED;margin-top:1px}
+
+.type-row{border-bottom:0.5px solid #1E2D42;padding:10px 0;display:flex;align-items:baseline;justify-content:space-between}
+.type-row:last-child{border-bottom:none}
+.type-meta{font-family:'DM Mono',monospace;font-size:10px;color:#4A6FA5;text-align:right}
+
+.icon-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:4px}
+.icon-item{background:#0D1117;border:0.5px solid #1E2D42;border-radius:8px;padding:10px 6px;display:flex;flex-direction:column;align-items:center;gap:5px}
+.icon-item i{font-size:18px;color:#2F6FED}
+.icon-label{font-size:9px;color:#4A6FA5;text-align:center;font-family:'DM Mono',monospace}
+
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:4px;font-size:10px;font-weight:500;font-family:'DM Mono',monospace;letter-spacing:0.04em}
+.badge-admin{background:#1a1220;border:0.5px solid #5a2d6e;color:#c084fc}
+.badge-manager{background:#0d1a2e;border:0.5px solid #1e4080;color:#60a5fa}
+.badge-operator{background:#0d2020;border:0.5px solid #0f5050;color:#2dd4bf}
+.badge-viewer{background:#161820;border:0.5px solid #2a2d3a;color:#94a3b8}
+
+.status-row{display:flex;align-items:center;gap:8px;margin-top:10px}
+.status-dot{width:7px;height:7px;border-radius:50%}
+.status-name{font-size:11px;color:#8BA4C8;font-family:'DM Mono',monospace}
+.status-arrow{font-size:10px;color:#1E2D42;margin:0 2px}
+
+.spacing-row{display:flex;align-items:flex-end;gap:8px;margin-top:8px}
+.sp-block{background:#1E2D42;border-radius:2px}
+.sp-label{font-family:'DM Mono',monospace;font-size:9px;color:#2F6FED;text-align:center;margin-top:4px}
+
+.monogram{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500;font-family:'DM Sans',sans-serif;letter-spacing:-0.04em}
+.mono-variants{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+.rule-item{display:flex;gap:10px;margin-top:12px;align-items:flex-start}
+.rule-icon{font-size:14px;color:#2F6FED;margin-top:1px;flex-shrink:0}
+.rule-text{font-size:11px;color:#8BA4C8;line-height:1.5}
+
+.header-badge{display:inline-flex;align-items:center;gap:6px;background:#0D1A2E;border:0.5px solid #1E3A6E;border-radius:20px;padding:4px 12px;font-size:10px;color:#2F6FED;font-family:'DM Mono',monospace;letter-spacing:0.06em;margin-bottom:20px}
+.header-badge i{font-size:11px}
+</style>
+
+<div class="bg">
+  <h2 class="sr-only">SIG Empresa — guia de identidade visual com paleta, tipografia, ícones, badges e componentes</h2>
+
+  <div class="header-badge"><i class="ti ti-building" aria-hidden="true"></i> identidade visual · v1.0</div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px">
+    <div>
+      <div class="logo-mark">
+        <span class="logo-sig">SIG</span><span class="logo-dot">·</span><span class="logo-emp">Empresa</span>
+      </div>
+      <div style="height:3px;width:36px;background:#2F6FED;border-radius:2px;margin-top:6px"></div>
+      <div class="tagline">Sistema de gestão empresarial interno</div>
+    </div>
+    <div class="mono-variants">
+      <div class="monogram" style="background:#0D1A2E;border:0.5px solid #1E3A6E;color:#60a5fa">S·E</div>
+      <div class="monogram" style="background:#2F6FED;color:#F0F4FF">S·E</div>
+      <div class="monogram" style="background:#111820;border:0.5px solid #2F6FED;color:#2F6FED">S·E</div>
+      <div class="monogram" style="background:#F0F4FF;color:#0D1117">S·E</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">paleta de cores</div>
+  <div class="row row-4" style="gap:12px">
+    <div>
+      <div class="swatch" style="background:#0D1117;border:0.5px solid #1E2D42"></div>
+      <div class="hex">#0D1117</div>
+      <div class="color-name">Noite</div>
+      <div class="color-role">fundo principal</div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#2F6FED"></div>
+      <div class="hex">#2F6FED</div>
+      <div class="color-name">Azul institucional</div>
+      <div class="color-role">ação · destaque · link</div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#1C3255"></div>
+      <div class="hex">#1C3255</div>
+      <div class="color-name">Azul profundo</div>
+      <div class="color-role">superfícies · hover</div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#4A6FA5"></div>
+      <div class="hex">#4A6FA5</div>
+      <div class="color-name">Ardósia</div>
+      <div class="color-role">texto secundário</div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#F0F4FF"></div>
+      <div class="hex">#F0F4FF</div>
+      <div class="color-name">Névoa</div>
+      <div class="color-role">texto primário</div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#22C27A"></div>
+      <div class="hex">#22C27A</div>
+      <div class="color-name">Esmeralda</div>
+      <div class="color-role">sucesso · aprovado</div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#F59E0B"></div>
+      <div class="hex">#F59E0B</div>
+      <div class="color-name">Âmbar</div>
+      <div class="color-role">aviso · pendente</div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#F43F5E"></div>
+      <div class="hex">#F43F5E</div>
+      <div class="color-name">Escarlate</div>
+      <div class="color-role">erro · rejeitado</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="row row-2" style="gap:24px">
+    <div>
+      <div class="section-label">tipografia</div>
+      <div class="card" style="padding:16px 20px">
+        <div class="type-row">
+          <span style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:500;color:#F0F4FF;letter-spacing:-0.02em">Título de página</span>
+          <span class="type-meta">DM Sans 500 · 22px</span>
+        </div>
+        <div class="type-row">
+          <span style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;color:#F0F4FF">Título de seção</span>
+          <span class="type-meta">DM Sans 500 · 16px</span>
+        </div>
+        <div class="type-row">
+          <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#8BA4C8">Texto de conteúdo e labels</span>
+          <span class="type-meta">DM Sans 400 · 13px</span>
+        </div>
+        <div class="type-row">
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:#4A6FA5">slug-do-sistema · CPF · ID</span>
+          <span class="type-meta">DM Mono 400 · 12px</span>
+        </div>
+        <div class="type-row">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;color:#2F6FED;letter-spacing:0.1em;text-transform:uppercase">RÓTULO DE SEÇÃO</span>
+          <span class="type-meta">DM Mono 500 · 10px</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">perfis de acesso</div>
+      <div class="card">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:10px">
+              <i class="ti ti-shield-filled" style="font-size:16px;color:#c084fc" aria-hidden="true"></i>
+              <span class="badge badge-admin">admin</span>
+            </div>
+            <span style="font-size:11px;color:#4A6FA5">acesso total</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:10px">
+              <i class="ti ti-briefcase" style="font-size:16px;color:#60a5fa" aria-hidden="true"></i>
+              <span class="badge badge-manager">manager</span>
+            </div>
+            <span style="font-size:11px;color:#4A6FA5">sistemas e despesas</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:10px">
+              <i class="ti ti-tool" style="font-size:16px;color:#2dd4bf" aria-hidden="true"></i>
+              <span class="badge badge-operator">operator</span>
+            </div>
+            <span style="font-size:11px;color:#4A6FA5">usuários e despesas</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:10px">
+              <i class="ti ti-eye" style="font-size:16px;color:#94a3b8" aria-hidden="true"></i>
+              <span class="badge badge-viewer">viewer</span>
+            </div>
+            <span style="font-size:11px;color:#4A6FA5">somente leitura</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="row row-2" style="gap:24px">
+    <div>
+      <div class="section-label">iconografia — entidades</div>
+      <div class="icon-grid">
+        <div class="icon-item"><i class="ti ti-id-badge" aria-hidden="true"></i><span class="icon-label">employee</span></div>
+        <div class="icon-item"><i class="ti ti-server" aria-hidden="true"></i><span class="icon-label">system</span></div>
+        <div class="icon-item"><i class="ti ti-users" aria-hidden="true"></i><span class="icon-label">user</span></div>
+        <div class="icon-item"><i class="ti ti-receipt" aria-hidden="true"></i><span class="icon-label">expense</span></div>
+        <div class="icon-item"><i class="ti ti-git-branch" aria-hidden="true"></i><span class="icon-label">status</span></div>
+        <div class="icon-item"><i class="ti ti-layout-dashboard" aria-hidden="true"></i><span class="icon-label">dashboard</span></div>
+        <div class="icon-item"><i class="ti ti-settings" aria-hidden="true"></i><span class="icon-label">config</span></div>
+        <div class="icon-item"><i class="ti ti-chart-bar" aria-hidden="true"></i><span class="icon-label">relatório</span></div>
+        <div class="icon-item"><i class="ti ti-bell" aria-hidden="true"></i><span class="icon-label">notif.</span></div>
+        <div class="icon-item"><i class="ti ti-lock" aria-hidden="true"></i><span class="icon-label">acesso</span></div>
+        <div class="icon-item"><i class="ti ti-search" aria-hidden="true"></i><span class="icon-label">busca</span></div>
+        <div class="icon-item"><i class="ti ti-filter" aria-hidden="true"></i><span class="icon-label">filtro</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">status workflows</div>
+      <div class="card" style="padding:16px 20px">
+        <div style="font-size:11px;color:#4A6FA5;margin-bottom:12px;font-family:'DM Mono',monospace">despesas</div>
+        <div class="status-row">
+          <div class="status-dot" style="background:#F59E0B"></div><span class="status-name">pendente</span>
+          <span class="status-arrow">→</span>
+          <div class="status-dot" style="background:#2F6FED"></div><span class="status-name">em análise</span>
+          <span class="status-arrow">→</span>
+          <div class="status-dot" style="background:#22C27A"></div><span class="status-name">aprovado</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:8px;margin-left:0">
+          <div style="width:7px;height:7px;border-radius:50%;background:#F59E0B;opacity:0"></div>
+          <span style="font-size:10px;color:#1E2D42;font-family:'DM Mono',monospace">↳</span>
+          <div class="status-dot" style="background:#F43F5E"></div><span class="status-name">rejeitado</span>
+        </div>
+
+        <div style="height:0.5px;background:#1E2D42;margin:14px 0"></div>
+
+        <div style="font-size:11px;color:#4A6FA5;margin-bottom:12px;font-family:'DM Mono',monospace">usuários externos</div>
+        <div class="status-row">
+          <div class="status-dot" style="background:#F59E0B"></div><span class="status-name">inativo</span>
+          <span class="status-arrow">→</span>
+          <div class="status-dot" style="background:#22C27A"></div><span class="status-name">ativo</span>
+          <span class="status-arrow">→</span>
+          <div class="status-dot" style="background:#4A6FA5"></div><span class="status-name">suspenso</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">espaçamento — escala base 4px</div>
+  <div style="display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap">
+    <div style="text-align:center">
+      <div style="width:4px;height:4px;background:#1E2D42;border-radius:1px;margin:0 auto"></div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:#4A6FA5;margin-top:4px">4px</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:8px;height:8px;background:#1E2D42;border-radius:1px;margin:0 auto"></div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:#4A6FA5;margin-top:4px">8px</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:12px;height:12px;background:#2F6FED;opacity:.3;border-radius:2px;margin:0 auto"></div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:#2F6FED;margin-top:4px">12px</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:16px;height:16px;background:#2F6FED;opacity:.5;border-radius:2px;margin:0 auto"></div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:#2F6FED;margin-top:4px">16px</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:24px;height:24px;background:#2F6FED;opacity:.7;border-radius:3px;margin:0 auto"></div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:#2F6FED;margin-top:4px">24px</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:32px;height:32px;background:#2F6FED;opacity:.85;border-radius:3px;margin:0 auto"></div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:#2F6FED;margin-top:4px">32px</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:48px;height:48px;background:#2F6FED;border-radius:4px;margin:0 auto"></div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:#2F6FED;margin-top:4px">48px</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="row row-2" style="gap:24px">
+    <div>
+      <div class="section-label">raios de borda</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px">
+        <div style="text-align:center">
+          <div style="width:44px;height:44px;background:#111820;border:0.5px solid #1E2D42;border-radius:4px"></div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:#4A6FA5;margin-top:5px">4px · badge</div>
+        </div>
+        <div style="text-align:center">
+          <div style="width:44px;height:44px;background:#111820;border:0.5px solid #1E2D42;border-radius:8px"></div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:#4A6FA5;margin-top:5px">8px · btn</div>
+        </div>
+        <div style="text-align:center">
+          <div style="width:44px;height:44px;background:#111820;border:0.5px solid #1E2D42;border-radius:12px"></div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:#4A6FA5;margin-top:5px">12px · card</div>
+        </div>
+        <div style="text-align:center">
+          <div style="width:44px;height:44px;background:#111820;border:0.5px solid #1E2D42;border-radius:22px"></div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:#4A6FA5;margin-top:5px">full · pill</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">princípios visuais</div>
+      <div class="rule-item">
+        <i class="ti ti-eye-off" style="font-size:14px;color:#2F6FED;margin-top:1px;flex-shrink:0" aria-hidden="true"></i>
+        <span class="rule-text">Ações indisponíveis por perfil são <strong style="color:#F0F4FF">ocultadas</strong>, não desabilitadas</span>
+      </div>
+      <div class="rule-item">
+        <i class="ti ti-border-style-2" style="font-size:14px;color:#2F6FED;margin-top:1px;flex-shrink:0" aria-hidden="true"></i>
+        <span class="rule-text">Bordas <strong style="color:#F0F4FF">0.5px</strong> em repouso, <strong style="color:#F0F4FF">1px azul</strong> em foco</span>
+      </div>
+      <div class="rule-item">
+        <i class="ti ti-alphabet" style="font-size:14px;color:#2F6FED;margin-top:1px;flex-shrink:0" aria-hidden="true"></i>
+        <span class="rule-text">Slugs e IDs sempre em <strong style="color:#F0F4FF">DM Mono</strong>, nunca em sans-serif</span>
+      </div>
+      <div class="rule-item">
+        <i class="ti ti-circle-check" style="font-size:14px;color:#2F6FED;margin-top:1px;flex-shrink:0" aria-hidden="true"></i>
+        <span class="rule-text">Feedback visual <strong style="color:#F0F4FF">imediato</strong> em todas as ações do sistema</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+    <div style="font-family:'DM Mono',monospace;font-size:10px;color:#1E2D42">SIG · identidade visual · v1.0</div>
+    <button onclick="sendPrompt('Gere um mockup da tela de listagem de funcionários usando o design system do SIG Empresa ↗')" style="font-family:'DM Mono',monospace;font-size:10px;background:transparent;border:0.5px solid #1E3A6E;color:#2F6FED;padding:5px 12px;border-radius:6px;cursor:pointer">mockup da tela de listagem ↗</button>
+  </div>
+</div>

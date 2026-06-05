@@ -1,0 +1,19 @@
+{
+  "project": "SIG Empresa",
+  "description": "Sistema de Gestão Empresarial",
+  "stack": {
+    "api": "NestJS 11",
+    "web": "Next.js 15 + React 19",
+    "database": "PostgreSQL 17 + Prisma ORM",
+    "infra": "Docker Compose"
+  },
+  "domains": ["employees", "systems", "users", "expenses", "statuses"],
+  "structure": {
+    "apps/api/": "NestJS backend (monolithic)",
+    "apps/web/": "Next.js frontend",
+    "packages/database/": "Prisma schema + client",
+    "docker/": "Docker Compose files",
+    "docs/": "Documentation",
+    "docs/identidade-visual/": "Brand identity (tokens, components, mock data)"
+  }
+}
