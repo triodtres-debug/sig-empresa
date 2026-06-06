@@ -1,4 +1,4 @@
-import { PrismaClient, Resource, Action } from '@prisma/client'
+import { PrismaClient, Resource, Action, Role } from '@prisma/client'
 import * as bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
@@ -88,7 +88,7 @@ async function main() {
   if (!adminEmp) {
     const password = await bcrypt.hash('admin123', 10)
     const emp = await prisma.employee.create({
-      data: { name: 'Admin', email: 'admin@sig.com', cpf: '00000000000', password, isAdmin: true },
+      data: { name: 'Admin', email: 'admin@sig.com', cpf: '00000000000', password, isAdmin: true, role: Role.ADMIN },
     })
     await prisma.employeeGroup.create({ data: { employeeId: emp.id, groupId: adminGroup.id } })
   } else {
@@ -105,7 +105,7 @@ async function main() {
   if (!marina) {
     const password = await bcrypt.hash('marina123', 10)
     const emp = await prisma.employee.create({
-      data: { name: 'Marina Santos', email: 'marina@sig.com', cpf: '11111111111', password },
+      data: { name: 'Marina Santos', email: 'marina@sig.com', cpf: '11111111111', password, role: Role.OPERATOR },
     })
     await prisma.employeeGroup.create({ data: { employeeId: emp.id, groupId: operatorGroup.id } })
   } else {

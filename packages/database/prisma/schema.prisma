@@ -67,6 +67,7 @@ model Employee {
   phone     String?
   photo     String?
   password  String
+  role      Role     @default(VIEWER)
   isAdmin   Boolean  @default(false)
   active    Boolean  @default(true)
   createdAt DateTime @default(now())

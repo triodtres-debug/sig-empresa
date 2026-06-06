@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Patch, Param, Body, UseGuards, Inject } from '@nestjs/common'
+import { Controller, Get, Post, Patch, Delete, Param, Body, UseGuards, Inject } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
 import { UsersService } from './users.service'
 import { RequirePermission } from '../common/permission.decorator'
@@ -31,5 +31,11 @@ export class UsersController {
   @RequirePermission('USERS', 'EDIT')
   update(@Param('id') id: string, @Body() body: { name?: string; email?: string; phone?: string; document?: string; active?: boolean }) {
     return this.service.update(id, body)
+  }
+
+  @Delete(':id')
+  @RequirePermission('USERS', 'DELETE')
+  remove(@Param('id') id: string) {
+    return this.service.remove(id)
   }
 }

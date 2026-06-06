@@ -20,7 +20,7 @@ import { AuthService } from '../auth/auth.service'
 
 const adminUser = {
   id: 'emp-1', name: 'Admin', email: 'admin@sig.com',
-  cpf: '00000000000', password: '', role: 'ADMIN' as const, active: true,
+  cpf: '00000000000', password: '', role: 'ADMIN', isAdmin: true, active: true,
   createdAt: new Date(), updatedAt: new Date(),
 }
 
@@ -82,6 +82,7 @@ describe('POST /api/auth/login', () => {
     expect(res.body.token).toBe('jwt-token-test')
     expect(res.body.employee.email).toBe('admin@sig.com')
     expect(res.body.employee.role).toBe('ADMIN')
+    expect(res.body.employee.isAdmin).toBe(true)
   })
 
   it('deve rejeitar senha incorreta', async () => {

@@ -1,3 +1,4 @@
+/* global console */
 import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common'
 import { Observable } from 'rxjs'
 import { tap } from 'rxjs/operators'
@@ -61,7 +62,9 @@ export class AuditInterceptor implements NestInterceptor {
               method,
             },
           })
-        } catch {}
+        } catch (error) {
+          console.warn('[AuditInterceptor] Failed to create audit log:', error)
+        }
       }),
     )
   }
@@ -69,7 +72,8 @@ export class AuditInterceptor implements NestInterceptor {
   private async readEntity(entityType: string, id: string): Promise<any> {
     try {
       return await (prisma as any)[entityType].findUnique({ where: { id } })
-    } catch {
+    } catch (error) {
+      console.warn('[AuditInterceptor] Failed to read entity:', error)
       return null
     }
   }

@@ -1,3 +1,5 @@
+import { toast } from '../components/ui/toast'
+
 const BASE = '/api'
 
 async function request(path: string, options?: RequestInit) {
@@ -17,10 +19,20 @@ async function request(path: string, options?: RequestInit) {
     throw new Error('Unauthorized')
   }
 
+  if (res.status === 403) {
+    toast('error', 'Você não tem permissão para esta ação')
+    throw new Error('Forbidden')
+  }
+
+  if (res.status === 404) {
+    toast('warning', 'Registro não encontrado')
+    throw new Error('Not Found')
+  }
+
   if (!res.ok) {
     const text = await res.text()
     let message = text || `HTTP ${res.status}`
-    try { const parsed = JSON.parse(text); if (parsed.message) message = parsed.message } catch {}
+    try { const parsed = JSON.parse(text); if (parsed.message) message = parsed.message } catch { /* ignore parse error */ }
     throw new Error(message)
   }
 
@@ -54,7 +66,7 @@ export const api = {
         body: formData,
       }).then(async res => {
         if (res.status === 401) { localStorage.removeItem('token'); localStorage.removeItem('employee'); window.location.href = '/'; throw new Error('Unauthorized') }
-        if (!res.ok) { const text = await res.text(); let m = text; try { const p = JSON.parse(text); if (p.message) m = p.message } catch {}; throw new Error(m) }
+        if (!res.ok) { const text = await res.text(); let m = text; try { const p = JSON.parse(text); if (p.message) m = p.message } catch { /* ignore parse error */ }; throw new Error(m) }
         return res.json()
       })
     },

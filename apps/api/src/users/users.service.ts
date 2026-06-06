@@ -25,4 +25,10 @@ export class UsersService {
     if (!user) throw new NotFoundException()
     return prisma.user.update({ where: { id }, data })
   }
+
+  async remove(id: string) {
+    const user = await prisma.user.findUnique({ where: { id } })
+    if (!user) throw new NotFoundException()
+    await prisma.user.delete({ where: { id } })
+  }
 }

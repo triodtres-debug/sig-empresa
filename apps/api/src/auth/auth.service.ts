@@ -14,7 +14,7 @@ export class AuthService {
     const valid = await bcrypt.compare(password, employee.password)
     if (!valid) throw new UnauthorizedException('Invalid credentials')
 
-    const token = this.jwt.sign({ sub: employee.id })
+    const token = this.jwt.sign({ sub: employee.id, role: employee.role })
 
     await prisma.session.create({
       data: { employeeId: employee.id, token, expiresAt: new Date(Date.now() + 8 * 60 * 60 * 1000) },
@@ -37,13 +37,13 @@ export class AuthService {
       })
     } catch {}
 
-    return { token, employee: { id: employee.id, name: employee.name, email: employee.email, photo: employee.photo, isAdmin: employee.isAdmin } }
+    return { token, employee: { id: employee.id, name: employee.name, email: employee.email, photo: employee.photo, role: employee.role, isAdmin: employee.isAdmin } }
   }
 
   async me(employeeId: string) {
     const employee = await prisma.employee.findUnique({
       where: { id: employeeId },
-      select: { id: true, name: true, email: true, photo: true, isAdmin: true, active: true },
+      select: { id: true, name: true, email: true, photo: true, role: true, isAdmin: true, active: true },
     })
     if (!employee) throw new UnauthorizedException()
     return employee

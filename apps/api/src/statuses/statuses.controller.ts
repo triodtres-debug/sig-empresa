@@ -10,18 +10,19 @@ export class StatusesController {
   constructor(@Inject(StatusesService) private service: StatusesService) {}
 
   @Get()
+  @RequirePermission('STATUSES', 'VIEW')
   list(@Query('entityType') entityType?: string) {
     return this.service.list(entityType)
   }
 
   @Post()
-  @RequirePermission('EXPENSES', 'CREATE')
+  @RequirePermission('STATUSES', 'CREATE')
   create(@Body() body: { name: string; slug: string; entityType: string; color?: string; order?: number }) {
     return this.service.create(body)
   }
 
   @Patch(':id')
-  @RequirePermission('EXPENSES', 'EDIT')
+  @RequirePermission('STATUSES', 'EDIT')
   update(@Param('id') id: string, @Body() body: { name?: string; color?: string; order?: number }) {
     return this.service.update(id, body)
   }
