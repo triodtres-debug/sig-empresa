@@ -8,5 +8,21 @@ coverage/
 *.tsbuildinfo
 next-env.d.ts
 apps/api/uploads/
+
+# AIOX / agent config
 .aiox-core
 AGENTS.md
+.opencode/
+opencode.json
+AI_RULES.md
+
+# Working / design docs (not needed to run)
+DESIGN.md
+TASKS.md
+docs-aiox.rar
+docs/ARCHITECTURE.md
+docs/BUSINESS_RULES.md
+docs/DEPLOY.md
+docs/PRD.md
+docs/SDD.md
+docs/UX.md
